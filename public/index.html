@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsightEngine | AI Sentiment Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <!-- <div class="logo"> -->
+                <!-- <i class="fas fa-brain"></i> -->
+                <h1>Moodify</h1>
+            <!-- </div> -->
+            <p class="subtitle">Sentiment analysis for any text</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="input-header">
+                    <h2><i class="fas fa-comment-dots"></i> Enter Your Text</h2>
+                    <div class="char-count" id="charCount">0/500</div>
+                </div>
+                <textarea 
+                    id="userInput" 
+                    placeholder="Type here (e.g., 'I liked the pizza, it was good!')..."
+                    maxlength="500"
+                ></textarea>
+                
+                <div class="button-group">
+                    <button onclick="analyzeText()" id="analyzeBtn" class="analyze-btn">
+                        <span class="btn-text">Let's GO!</span>
+                        <div class="spinner hidden" id="spinner">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </button>
+                    
+                    <button onclick="clearText()" class="clear-btn">
+                        <i class="fas fa-eraser"></i> Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultSection">
+                <h2><i class="fas fa-chart-bar"></i> Analysis Results</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card mood-card">
+                        <div class="card-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <h3>Sentiment</h3>
+                        <div class="mood-display" id="moodDisplay">--</div>
+                        <div class="mood-bar">
+                            <div class="mood-fill" id="moodBar"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card score-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Confidence</h3>
+                        <div class="score-display" id="scoreDisplay">--</div>
+                        <div class="score-sub">(0-100 scale)</div>
+                    </div>
+                    
+                    <div class="result-card full-card">
+                        <div class="card-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3>Key Insights</h3>
+                        <div class="keywords-container" id="keywordsDisplay">
+                            <span class="placeholder">Keywords will appear here...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insight-tip hidden" id="insightTip">
+                    <i class="fas fa-lightbulb"></i>
+                    <span id="tipText">Tip will appear based on sentiment</span>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>Powered by LILESH PATHE • <span id="currentYear"></span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
